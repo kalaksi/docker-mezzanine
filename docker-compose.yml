@@ -1,0 +1,28 @@
+version: 2
+services:
+  mezzanine:
+    image: kalaksi/mezzanine
+    container_name: mezzanine
+    volumes:
+      - mezzanine_projects:/srv/mezzanine
+      - mezzanine_nginx_config:/etc/nginx/conf.d
+    # Configure the existing Mezzanine project name here
+    # environment:
+    #   MEZZANINE_PROJECT: my_new_project
+
+  nginx:
+    image: nginx:stable
+    container_name: mezzanine-http-server
+    # We can just use the same volumes directly since the paths are reasonable.
+    volumes_from:
+      - mezzanine:ro
+    ports:
+      - 80:8080/tcp
+      # You need to set up HTTPS yourself if necessary.
+      # - 443:443/tcp
+
+volumes:
+  # Feel free to use other methods for sharing configuration
+  mezzanine_nginx_config: {}
+  mezzanine_projects: {}
+
