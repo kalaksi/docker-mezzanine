@@ -3,6 +3,8 @@ services:
   mezzanine:
     image: kalaksi/mezzanine
     container_name: mezzanine
+    cap_drop:
+      - ALL
     volumes:
       - mezzanine_projects:/srv/mezzanine
       - mezzanine_nginx_config:/etc/nginx/conf.d
@@ -13,9 +15,19 @@ services:
   nginx:
     image: nginx:stable
     container_name: mezzanine-http-server
-    # We can just use the same volumes directly since the paths are reasonable.
-    volumes_from:
-      - mezzanine:ro
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETUID
+      - SETGID
+    # We could use volumes_from since the paths are reasonable
+    #volumes_from:
+    #  - mezzanine:ro
+    volumes:
+      - mezzanine_projects:/srv/mezzanine
+      - mezzanine_nginx_config:/etc/nginx/conf.d
     ports:
       - 80:8080/tcp
       # You need to set up HTTPS yourself if necessary.
