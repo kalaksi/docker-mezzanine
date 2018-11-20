@@ -12,8 +12,7 @@ On top of that, overly complex shell scripts, monolithic designs and unofficial 
 To remedy the situation, these images have been written with security and simplicity in mind. See [Design Goals](#design-goals) further down.
 
 ### Running this container
-This container only contains Mezzanine and Gunicorn and does not run a HTTP server (which is how things should be).  
-However, this container generates working Nginx configuration and can easily be used with official Nginx container without additional steps.
+This container only contains Mezzanine and Gunicorn and does not run a HTTP server (which is how things should be). However, this container generates working Nginx configuration and can easily be used with official Nginx container without additional steps.  
 The ```docker-compose.yml``` in the source repository contains a complete example.
 
 By default, this container runs the Gunicorn server which expects to find an existing Mezzanine project.
@@ -21,9 +20,7 @@ You only need to define the ```MEZZANINE_PROJECT``` environment variable which i
 **See below for more information on how to start a new project.**
 
 #### Configuration
-This container does not currently offer any environment variables for configuring the project(s) themselves.
-Unfortunately, configuring the project is usually a complex task and there are many important configuration options to check (DEBUG, TIME_ZONE, *_KEY, ALLOWED_HOSTS).
-Containers that offer just a limited set (e.g. for only database settings) only give a false sense of simplicity!
+This container does not currently offer any environment variables for configuring the project(s) themselves. Unfortunately, configuring the project is usually a complex task and there are many important configuration options to check. Containers that offer just a limited set (e.g. for only database settings) only give a false sense of simplicity!  
 
 It's best you get familiar with configuring Django/Mezzanine projects and just modify the ```local_settings.py``` yourself.
 
@@ -31,6 +28,7 @@ It's best you get familiar with configuring Django/Mezzanine projects and just m
 This is a quick guide for creating a new project. For more details, see the Mezzanine documentation: http://mezzanine.jupo.org/docs/overview.html#installation  
   
 Execute a shell inside the container (or run the necessary commands from outside). This can be achieved with e.g. ```docker-compose run mezzanine sh``` which will also ensure the necessary volumes are mounted.  
+
 Then do the usual steps:
 1. Create a new project and descend to the directory with: ```mezzanine-project my_new_project && cd my_new_project```
 2. Configure the project etc. by modifying file ```my_new_project/local_settings.py``` (or do the modifications from outside this container).
