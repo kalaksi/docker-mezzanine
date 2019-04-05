@@ -1,8 +1,8 @@
-version: 2
+version: '2'
 services:
   mezzanine:
     image: kalaksi/mezzanine
-    container_name: mezzanine
+    restart: unless-stopped
     cap_drop:
       - ALL
     volumes:
@@ -14,7 +14,7 @@ services:
 
   nginx:
     image: nginx:stable
-    container_name: mezzanine-http-server
+    restart: unless-stopped
     cap_drop:
       - ALL
     cap_add:
