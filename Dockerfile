@@ -1,13 +1,13 @@
-FROM alpine:3.8
+FROM alpine:3.9
 LABEL maintainer="kalaksi@users.noreply.github.com"
 
 # Only allow patch/minor-version updates to keep things more stable. These are overridable in the
-# build-phase. I'll update these from time to time and add a new version tag in Docker Hub.
+# build-phase. I'll update these from time to time and bump the version if mezzanine gets updated.
 ARG GUNICORN_VERSION=">=19.0.0,<20.0.0"
 ARG MEZZANINE_VERSION=">=4.3.0,<4.4.0"
-ARG PYTHON_LDAP_VERSION=">=3.1.0,<3.2.0"
+ARG PYTHON_LDAP_VERSION=">=3.2.0,<3.3.0"
 ARG DJANGO_AUTH_LDAP_VERSION=">=1.7.0,<1.8.0"
-ARG PSYCOPG2_VERSION=">=2.7.0,<2.8.0"
+ARG PSYCOPG2_VERSION=">=2.8.0,<2.9.0"
 
 # Configure the Mezzanine project name here (also, the directory name). Mandatory.
 # Configuring the project is done by modifying the local_settings.py file, as usual.
