@@ -49,7 +49,7 @@ Then do the usual steps:
 #### Tweaking the Nginx configuration template
 The template file resides in ```/etc/nginx/mezzanine.conf.tpl```. Instances of ```MEZZANINE_PROJECT``` will be replaced with the project's name and the actual configuration file placed in ```/etc/nginx/conf.d/mezzanine_my_new_project.conf```, where "my_new_project" is of course the project's name.  
   
-To alter the template, you only need to get it replaced one way or another. You could bind-mount something over it or mount a volume over the whole ```/etc/nginx``` directory.
+To alter the template, you only need to get it replaced one way or another. You could bind-mount something over it or mount a volume over the whole ```/etc/nginx``` directory. See ```docker-compose.yml``` for an example.
 
 ## Supported tags
 See the ```Tags``` tab on Docker Hub for specifics. Basically you have:
