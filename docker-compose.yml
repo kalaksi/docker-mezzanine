@@ -25,6 +25,8 @@ services:
     # We could use volumes_from since the paths are reasonable
     #volumes_from:
     #  - mezzanine:ro
+    depends_on:
+      - mezzanine
     volumes:
       - mezzanine_projects:/srv/mezzanine
       - mezzanine_nginx_config:/etc/nginx/conf.d
