@@ -1,4 +1,4 @@
-FROM alpine:3.10.2
+FROM alpine:3.10.3
 LABEL maintainer="kalaksi@users.noreply.github.com"
 
 # Only allow patch/minor-version updates to keep things more stable. These are overridable in the
