@@ -1,6 +1,6 @@
 
 ## Repositories
-- [Docker Hub repository](https://registry.hub.docker.com/u/kalaksi/mezzanine/)
+- [Docker Hub repository](https://hub.docker.com/r/kalaksi/mezzanine/)
 - [GitHub repository](https://github.com/kalaksi/docker-mezzanine)
 
 ## Why use this container?
