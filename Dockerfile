@@ -6,11 +6,9 @@ LABEL maintainer="kalaksi@users.noreply.github.com"
 
 # Only allow patch/minor-version updates to keep things more stable. These are overridable in the
 # build-phase. I'll update these from time to time and bump the version if mezzanine gets updated.
-ARG GUNICORN_VERSION=">=19.0.0,<20.0.0"
 ARG MEZZANINE_VERSION=">=4.3.0,<4.4.0"
-ARG PYTHON_LDAP_VERSION=">=3.2.0,<3.3.0"
-ARG DJANGO_AUTH_LDAP_VERSION=">=1.7.0,<1.8.0"
-ARG PSYCOPG2_VERSION=">=2.8.0,<2.9.0"
+ARG GUNICORN_VERSION=">=19.0.0,<20.0.0"
+ARG EXTRA_PIP_PACKAGES="psycopg2>=2.8.0,<2.9.0 python-ldap>=3.2.0,<3.3.0 django-auth-ldap>=1.7.0,<1.8.0"
 
 # Set the Mezzanine project's name (mandatory).
 # Configuring the project is done by modifying the local_settings.py file, as usual.
@@ -41,10 +39,8 @@ RUN apk add --no-cache --virtual=build-deps \
     pip3 --no-cache-dir install --upgrade setuptools pip && \
     pip3 --no-cache-dir install --upgrade \
       mezzanine${MEZZANINE_VERSION} \
-      psycopg2${PSYCOPG2_VERSION} \
       gunicorn${GUNICORN_VERSION} \
-      python-ldap${PYTHON_LDAP_VERSION} \
-      django-auth-ldap${DJANGO_AUTH_LDAP_VERSION} && \
+      ${EXTRA_PIP_PACKAGES} && \
     apk del --no-cache --purge build-deps
 
 # Use standard directories to better show the intention and keep things ordered.
