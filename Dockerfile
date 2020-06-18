@@ -33,6 +33,7 @@ RUN apk add --no-cache --virtual=build-deps \
       zlib-dev && \
     apk add --no-cache --virtual=run-deps \
       python3 \
+      py3-pip \
       jpeg \
       postgresql-libs \
       su-exec && \
