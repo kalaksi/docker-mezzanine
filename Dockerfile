@@ -1,13 +1,13 @@
 # Copyright (c) 2018 kalaksi@users.noreply.github.com.
 # This work is licensed under the terms of the MIT license. For a copy, see <https://opensource.org/licenses/MIT>.
 
-FROM alpine:3.11.5
+FROM alpine:3.12.0
 LABEL maintainer="kalaksi@users.noreply.github.com"
 
 # Only allow patch/minor-version updates to keep things more stable. These are overridable in the
 # build-phase. I'll update these from time to time and bump the version if mezzanine gets updated.
 ARG MEZZANINE_VERSION=">=4.3.0,<4.4.0"
-ARG GUNICORN_VERSION=">=19.0.0,<20.0.0"
+ARG GUNICORN_VERSION=">=20.0.0,<21.0.0"
 ARG EXTRA_PIP_PACKAGES="psycopg2>=2.8.0,<2.9.0 python-ldap>=3.2.0,<3.3.0 django-auth-ldap>=1.7.0,<1.8.0"
 
 # Set the Mezzanine project's name (mandatory).
