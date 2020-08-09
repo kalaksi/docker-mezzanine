@@ -1,0 +1,14 @@
+version: '2'
+services:
+  sut:
+    build: .
+    command: >-
+      wget -O- "http://mezzanine:8000"
+    depends_on:
+      - mezzanine
+  mezzanine:
+    build: .
+    cap_drop:
+      - ALL
+    environment:
+      MEZZANINE_PROJECT: my_test_project
