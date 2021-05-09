@@ -1,7 +1,7 @@
 # Copyright (c) 2018 kalaksi@users.noreply.github.com.
 # This work is licensed under the terms of the MIT license. For a copy, see <https://opensource.org/licenses/MIT>.
 
-FROM alpine:3.13.2
+FROM alpine:3.13.5
 LABEL maintainer="kalaksi@users.noreply.github.com"
 
 # Only allow patch/minor-version updates to keep things more stable. These are overridable in the
